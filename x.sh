@@ -34,7 +34,7 @@ aapt package -f -m \
 
 zipalign -v 4 output/game.apk output/game-aligned.apk
 
-apksigner sign --ks android.jks --ks-key-alias android --ks-pass pass:android --key-pass pass:android output/game-aligned.apk
+apksigner sign --ks android.keystore --ks-key-alias android --ks-pass pass:android --key-pass pass:android output/game-aligned.apk
 
 cp output/game-aligned.apk game.apk
 
