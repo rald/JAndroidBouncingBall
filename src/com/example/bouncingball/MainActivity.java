@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
             canvas.drawCircle(x, y, radius, paint);
 
             // Invalidate to request redraw next frame
-            postInvalidateDelayed(30);
+            postInvalidateDelayed(10);
         }
     }
 }
