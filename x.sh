@@ -1,7 +1,8 @@
 #!/bin/bash
 
-rm -rf obj gen output game.apk
+rm -rf bin obj gen output game.apk
 
+mkdir bin
 mkdir obj
 mkdir gen
 mkdir output
@@ -27,16 +28,11 @@ aapt package -f -m \
     -S res \
     -M AndroidManifest.xml \
     -I android-30.jar \
-    -F output/game.apk \
+    -F bin/game.apk \
     output
 
-#zip -u output/game.apk output/classes.dex
+zipalign -v 4 bin/game.apk bin/game-aligned.apk
 
-zipalign -v 4 output/game.apk output/game-aligned.apk
+apksigner sign --ks android.keystore --ks-key-alias android --ks-pass pass:android --key-pass pass:android bin/game-aligned.apk
 
-apksigner sign --ks android.keystore --ks-key-alias android --ks-pass pass:android --key-pass pass:android output/game-aligned.apk
-
-cp output/game-aligned.apk game.apk
-
-
-
+cp bin/game-aligned.apk game.apk

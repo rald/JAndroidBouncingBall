@@ -1,2 +1,2 @@
-rm -rf gen obj output game.apk
+rm -rf bin gen obj output game.apk
 
