@@ -15,7 +15,7 @@ aapt package -f -m \
 
 javac -cp android-30.jar -d obj $(find src -name '*.java')
 
-d8 $(find obj -name '*.class') --lib android-30.jar --output output
+d8 --lib android-30.jar --output output $(find obj -name '*.class')
 
 aapt package -f -m \
 	-J gen \
